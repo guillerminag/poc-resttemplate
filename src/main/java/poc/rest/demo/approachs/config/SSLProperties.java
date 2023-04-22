@@ -1,4 +1,4 @@
-package poc.rest.demo.galicia.config;
+package poc.rest.demo.approachs.config;
 
 import org.springframework.context.annotation.Configuration;
 

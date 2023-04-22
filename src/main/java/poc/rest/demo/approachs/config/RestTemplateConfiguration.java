@@ -1,4 +1,4 @@
-package poc.rest.demo.galicia.config;
+package poc.rest.demo.approachs.config;
 
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.client.RestTemplate;
@@ -59,7 +58,7 @@ public class RestTemplateConfiguration {
         return new HttpComponentsClientHttpRequestFactory(httpClient);
     }
 
-    @Bean("ar.com.bancogalicia.psca.bff.card.configuration.restTemplates")
+    @Bean("configuration.restTemplates")
     public Map<String, RestTemplate> restTemplates(RestTemplateBuilder restTemplateBuilder) {
         Map<String, RestTemplate> map = new HashMap<>();
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();

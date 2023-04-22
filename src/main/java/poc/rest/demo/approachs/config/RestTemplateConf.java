@@ -1,4 +1,4 @@
-package poc.rest.demo.galicia.config;
+package poc.rest.demo.approachs.config;
 
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.client.RestTemplate;
@@ -48,7 +47,7 @@ public class RestTemplateConf {
         return requestFactory;
     }
 
-    @Bean("ar.com.bancogalicia.squad.prueba.configuration.restTemplates")
+    @Bean("prueba.configuration.restTemplates")
     public Map<String, RestTemplate> restTemplates(RestTemplateBuilder restTemplateBuilder) {
         Map<String, RestTemplate> map = new HashMap<>();
         RestTemplate connectionRestTemplate = restTemplateBuilder.setConnectTimeout(Duration.ofSeconds(3, 1)).setReadTimeout(Duration.ofSeconds(3, 1)).build();
