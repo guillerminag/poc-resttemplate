@@ -1,4 +1,4 @@
-package poc.rest.demo;
+package poc.rest.demo.dto;
 
 public class UserDTO {
     private Integer id;
