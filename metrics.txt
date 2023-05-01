@@ -1,0 +1,31 @@
+tomcat.global.request
+tomcat.global.request.max
+MeterId{name='tomcat.sessions.active.max', tags=[]}
+MeterId{name='tomcat.threads.current', tags=[tag(name=http-nio-8080)]}
+MeterId{name='executor.pool.core', tags=[tag(name=applicationTaskExecutor)]}
+MeterId{name='tomcat.servlet.request.max', tags=[tag(name=dispatcherServlet)]}
+MeterId{name='tomcat.threads.busy', tags=[tag(name=http-nio-8080)]}
+MeterId{name='tomcat.sessions.created', tags=[]}
+MeterId{name='tomcat.global.received', tags=[tag(name=http-nio-8080)]}
+MeterId{name='tomcat.sessions.expired', tags=[]}
+MeterId{name='executor.pool.max', tags=[tag(name=applicationTaskExecutor)]}
+MeterId{name='executor.completed', tags=[tag(name=applicationTaskExecutor)]}
+MeterId{name='tomcat.connections.current', tags=[tag(name=http-nio-8080)]}
+MeterId{name='tomcat.sessions.alive.max', tags=[]}
+MeterId{name='tomcat.sessions.rejected', tags=[]}
+MeterId{name='tomcat.threads.config.max', tags=[tag(name=http-nio-8080)]}
+MeterId{name='tomcat.connections.config.max', tags=[tag(name=http-nio-8080)]}
+MeterId{name='tomcat.servlet.error', tags=[tag(name=dispatcherServlet)]}
+MeterId{name='tomcat.global.sent', tags=[tag(name=http-nio-8080)]}
+MeterId{name='executor.pool.size', tags=[tag(name=applicationTaskExecutor)]}
+MeterId{name='executor.queue.remaining', tags=[tag(name=applicationTaskExecutor)]}
+MeterId{name='tomcat.sessions.active.current', tags=[]}
+MeterId{name='tomcat.connections.keepalive.current', tags=[tag(name=http-nio-8080)]}
+MeterId{name='tomcat.global.error', tags=[tag(name=http-nio-8080)]}
+MeterId{name='tomcat.cache.access', tags=[]}
+
+
+
+
+
+

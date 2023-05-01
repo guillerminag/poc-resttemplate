@@ -1,10 +1,10 @@
 package poc.rest.demo.approachs.config;
 
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.ssl.SSLContextBuilder;
+//import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+//import org.apache.http.impl.client.CloseableHttpClient;
+//import org.apache.http.impl.client.HttpClients;
+//import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+//import org.apache.http.ssl.SSLContextBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,32 +28,40 @@ public class RestTemplateConf {
     @Autowired
     private SSLProperties sslProperties;
 
-    private HttpComponentsClientHttpRequestFactory validateSSL() {
-        PoolingHttpClientConnectionManager clientConnectionManager = new PoolingHttpClientConnectionManager();
-        clientConnectionManager.setMaxTotal(100);
-        clientConnectionManager.setDefaultMaxPerRoute(100);
-        String trustStore = sslProperties.getTrustStore();
-        String trustStorePassword = sslProperties.getTrustStorePassword();
-        SSLContext sslContext = null;
-        try {
-            sslContext = SSLContextBuilder.create().loadTrustMaterial(ResourceUtils.getFile(trustStore), trustStorePassword.toCharArray()).build();
-        } catch (Exception ex) {
-            LOGGER.error("Ocurrio un error al cargar el keystore.jks configurado.", ex.getMessage());
-            throw new RuntimeException(ex.getCause());
-        }
-        SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
-        CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).setConnectionManager(clientConnectionManager).build();
-        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-        return requestFactory;
-    }
+//    private HttpComponentsClientHttpRequestFactory validateSSL() {
+//        PoolingHttpClientConnectionManager clientConnectionManager = new PoolingHttpClientConnectionManager();
+//        clientConnectionManager.setMaxTotal(100);
+//        clientConnectionManager.setDefaultMaxPerRoute(100);
+//        String trustStore = sslProperties.getTrustStore();
+//        String trustStorePassword = sslProperties.getTrustStorePassword();
+//        SSLContext sslContext = null;
+//        try {
+//            sslContext = SSLContextBuilder.create()
+//                    .loadTrustMaterial(ResourceUtils.getFile(trustStore), trustStorePassword.toCharArray())
+//                    .build();
+//        } catch (Exception ex) {
+//            LOGGER.error("Ocurrio un error al cargar el keystore.jks configurado.", ex.getMessage());
+//            throw new RuntimeException(ex.getCause());
+//        }
+//        SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
+//        CloseableHttpClient httpClient = HttpClients.custom()
+//                .setSSLSocketFactory(csf).setConnectionManager(clientConnectionManager).build();
+//        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+//        return requestFactory;
+//    }
 
-    @Bean("prueba.configuration.restTemplates")
-    public Map<String, RestTemplate> restTemplates(RestTemplateBuilder restTemplateBuilder) {
-        Map<String, RestTemplate> map = new HashMap<>();
-        RestTemplate connectionRestTemplate = restTemplateBuilder.setConnectTimeout(Duration.ofSeconds(3, 1)).setReadTimeout(Duration.ofSeconds(3, 1)).build();
-        map.put("connectionRestTemplate", connectionRestTemplate);
-        RestTemplate connectionSSLRestTemplate = restTemplateBuilder.setConnectTimeout(Duration.ofSeconds(3, 1)).setReadTimeout(Duration.ofSeconds(3, 1)).requestFactory(() -> validateSSL()).build();
-        map.put("connectionSSLRestTemplate", connectionSSLRestTemplate);
-        return map;
-    }
+//    @Bean("prueba.configuration.restTemplates")
+//    public Map<String, RestTemplate> restTemplates(RestTemplateBuilder restTemplateBuilder) {
+//        Map<String, RestTemplate> map = new HashMap<>();
+//        RestTemplate connectionRestTemplate = restTemplateBuilder
+//                .setConnectTimeout(Duration.ofSeconds(3, 1))
+//                .setReadTimeout(Duration.ofSeconds(3, 1)).build();
+//        map.put("connectionRestTemplate", connectionRestTemplate);
+//        RestTemplate connectionSSLRestTemplate = restTemplateBuilder
+//                .setConnectTimeout(Duration.ofSeconds(3, 1))
+//                .setReadTimeout(Duration.ofSeconds(3, 1))
+//                .requestFactory(() -> validateSSL()).build();
+//        map.put("connectionSSLRestTemplate", connectionSSLRestTemplate);
+//        return map;
+//    }
 }

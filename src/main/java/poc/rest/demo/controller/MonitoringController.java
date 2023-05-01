@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import poc.rest.demo.monitoring.mbeans.RestTemplateMBean;
+import poc.rest.demo.monitoring.rest.RestTemplateMetricsService;
 import poc.rest.demo.monitoring.tomcat.TomcatMetricsService;
 
 import javax.management.*;
@@ -16,7 +18,14 @@ public class MonitoringController {
     @Autowired
     private TomcatMetricsService tomcatService;
 
+    @Autowired
+    private RestTemplateMetricsService restTemplateMetricsService;
 
+    @GetMapping(value = "/rest")
+    public ResponseEntity<Map> getRestTemplateMetrics(){
+        Map metrics = restTemplateMetricsService.getMetrics();
+        return new ResponseEntity<Map>(metrics, HttpStatus.OK);
+    }
 
     @GetMapping(value = "/tomcat")
     public ResponseEntity<Map> getTomcatMetrics(){

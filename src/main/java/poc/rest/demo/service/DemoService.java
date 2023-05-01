@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -30,8 +32,12 @@ public class DemoService {
     public List<UserDTO> getAll(){
         ResponseEntity<ListResponse> response;
         try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("user-agent", "Application");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
             response = restTemplate.getForEntity(apiConfig.getUrl() + apiConfig.getEndpoint(),
-                    ListResponse.class);
+                    ListResponse.class,entity);
+
 
         }catch(Exception ex){
             LOGGER.error("Error: ",ex);

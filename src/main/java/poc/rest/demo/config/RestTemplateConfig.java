@@ -14,7 +14,8 @@ public class RestTemplateConfig {
 
     @Bean("insecureRestTemplate")
     public RestTemplate restTemplate(){
-        RestTemplate restTemplate = builder.build();
+        RestTemplate restTemplate = builder
+                .build();
         return restTemplate;
     }
     @Bean("secureRestTemplate")

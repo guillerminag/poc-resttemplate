@@ -25,8 +25,7 @@ public class TomcatMetricsService {
     public static final String MAX_THREADS_ATTR = "maxThreads";
     @Autowired
     private MeterRegistry repo;
-    @Autowired
-    private MonitoringService monitoringService;
+
 
   //  @Autowired
     private Manager tomcatManager;
@@ -49,7 +48,7 @@ public class TomcatMetricsService {
 
 
     public Map setMetrics(Map<String, Double> newMetrics) throws MalformedObjectNameException, InstanceNotFoundException, ReflectionException, MBeanException, InvalidAttributeValueException, AttributeNotFoundException {
-        MBeanServer mBeanServer = monitoringService.getMBeanServer();
+        MBeanServer mBeanServer = MonitoringService.getMBeanServer();
 
    /*     // mBeanServer.getDomains();
         Hashtable table=new Hashtable();
@@ -59,6 +58,7 @@ public class TomcatMetricsService {
 
        // MBeanInfo mBeanInfo1 = mBeanServer.getMBeanInfo(objectName);*/
         ObjectName objectName = ObjectName.getInstance(MBEAN_NAME);
+
      //   MBeanInfo mBeanInfo = mBeanServer.getMBeanInfo(objectName);
         Double value = newMetrics.get(MAX_THREADS_ATTR);
         Attribute attribute=new Attribute(MAX_THREADS_ATTR, value.intValue());
